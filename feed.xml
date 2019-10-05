@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-05T16:15:28+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Enes Süleyman ATEŞ</title><subtitle>Personal website of Vivek Krishnakumar, a Bioinformatics Engineer working at Illumina</subtitle><author><name>Enes Ateş</name></author><entry><title type="html">Adding and Configuring Social Links</title><link href="http://localhost:4000/adding-configuring-social-links/" rel="alternate" type="text/html" title="Adding and Configuring Social Links" /><published>2017-08-14T10:15:00+03:00</published><updated>2017-08-14T10:15:00+03:00</updated><id>http://localhost:4000/adding-configuring-social-links</id><content type="html" xml:base="http://localhost:4000/adding-configuring-social-links/">&lt;h2 id=&quot;summary&quot;&gt;Summary:&lt;/h2&gt;
+
+&lt;p&gt;The Indigo theme allows users to maintain and display a selection of links to their social presence.
+A recent modification to this functionality makes configuring and maintaining these links, very easy.&lt;/p&gt;
+
+&lt;h3 id=&quot;index&quot;&gt;Index&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#background&quot;&gt;Background&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#improvements&quot;&gt;Improvements&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#compatibility&quot;&gt;Compatibility&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#additions-for-scientific-users&quot;&gt;Additions for scientific users&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;Traditionally, a pre-defined set of social links were made available for the user to enable/disable, via the use of named configuration variables in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;, like so:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;facebook: myfacebook
+twitter: mytwitter
+# google: mygoogle
+# instagram: myinstagram
+# pinterest: mypinterest
+linkedin: mylinkedin
+youtube: myyoutube
+spotify: myspotify
+github: mygithub
+email: myemail@gmail.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depending on which links were required, the user would un-comment (remove the ‘#’ symbol at the beginning of the line) specific lines of the config and replace the dummy names (&lt;strong&gt;myfacebook&lt;/strong&gt;, &lt;strong&gt;mytwitter&lt;/strong&gt;, etc.) with their actual IDs from each of the sites.&lt;/p&gt;
+
+&lt;p&gt;Once enabled, the &lt;a href=&quot;https://github.com/vivekkrish/vivekkrish.github.io/blob/76d0b3c52bd2e4fac69ff1b99eb58f01947e4ae2/_includes/social-links.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/social-links.html&lt;/code&gt;&lt;/a&gt; file would rely on the configs and display the corresponding set of links along with icon assets from &lt;a href=&quot;https://github.com/vivekkrish/vivekkrish.github.io/blob/master/_includes/icons.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_include/icons.html&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;improvements&quot;&gt;Improvements&lt;/h2&gt;
+
+&lt;p&gt;With the existing implementation, it was not very easy to add new links or re-order them on the home page. To make this process easier, the following improvements were made.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The manifest of social links was moved to a &lt;a href=&quot;http://yaml.org&quot;&gt;YAML&lt;/a&gt; formatted data file, &lt;a href=&quot;https://github.com/vivekkrish/vivekkrish.github.io/blob/master/_data/social-links.yml&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_data/social-links.yml&lt;/code&gt;&lt;/a&gt;, which stores the social site &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; (e.g. &lt;strong&gt;facebook&lt;/strong&gt;), &lt;code class=&quot;highlighter-rouge&quot;&gt;url-prefix&lt;/code&gt; (e.g. &lt;strong&gt;facebook.com/&lt;/strong&gt;), &lt;code class=&quot;highlighter-rouge&quot;&gt;url-scheme&lt;/code&gt; (e.g. &lt;strong&gt;https://&lt;/strong&gt;) and &lt;code class=&quot;highlighter-rouge&quot;&gt;icon&lt;/code&gt; name (only required, if the &lt;code class=&quot;highlighter-rouge&quot;&gt;icon&lt;/code&gt; name was different from the social site &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;).&lt;/p&gt;
+
+    &lt;p&gt;Here are some sample configurations:&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  - name: facebook
+    url-prefix: facebook.com/
+
+  - name: twitter
+    url-prefix: twitter.com/
+
+  - name: lanyrd
+    url-prefix: lanyrd.com/
+    url-scheme: 'http://'
+    icon: microphone
+
+  - name: email
+    url-scheme: 'mailto:'
+    icon: mail
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The updated &lt;a href=&quot;https://github.com/vivekkrish/vivekkrish.github.io/blob/master/_includes/social-links.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/social-links.html&lt;/code&gt;&lt;/a&gt; file iterates over the entries in &lt;code class=&quot;highlighter-rouge&quot;&gt;_data/social-links.yml&lt;/code&gt;, and makes use of the actual IDs configured in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; along with the icons in &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/icons.html&lt;/code&gt; to render the linkouts.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A new configuration variable called &lt;code class=&quot;highlighter-rouge&quot;&gt;social-links-order&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; allows the user to specify the explicit ordering of the linkouts (which overrides the listed order in &lt;code class=&quot;highlighter-rouge&quot;&gt;_data/social-links.yml&lt;/code&gt; manifest file). For example:&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  social-links-order: [github, facebook, twitter, medium, email]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;compatibility&quot;&gt;Compatibility&lt;/h2&gt;
+
+&lt;p&gt;These changes are fully backward compatible with the previous social link configuration set in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;. No changes are needed as long as you did not make modifications to your own &lt;a href=&quot;https://github.com/vivekkrish/vivekkrish.github.io/blob/76d0b3c52bd2e4fac69ff1b99eb58f01947e4ae2/_includes/social-links.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/social-links.html&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you use the new &lt;code class=&quot;highlighter-rouge&quot;&gt;social-links-order&lt;/code&gt; variable, ensure that you add all the social media names to the list, otherwise they will not show up.&lt;/p&gt;
+
+&lt;h2 id=&quot;additions-for-scientific-users&quot;&gt;Additions for scientific users&lt;/h2&gt;
+
+&lt;p&gt;For users in the scientific/academic fields who wish to link out to relevant resources that track their publication records, citation impact metrics, etc., Indigo now offers a set of scientific social linkouts to the following websites:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Google Scholar&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ResearchGate&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Mendeley&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;PubMed&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ORCiD&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Impactstory&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;figshare&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>vivekkrish</name></author><category term="blog" /><category term="indigo" /><category term="how-to" /><category term="configuration" /><category term="social" /><category term="linkout" /><summary type="html">Summary:</summary></entry></feed>
